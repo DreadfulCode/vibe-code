@@ -34,6 +34,7 @@ const layoutStyles = {
   nav: {
     display: 'flex',
     gap: '1.5rem',
+    listStyle: 'none',
   },
   navLink: {
     color: '#212121',
