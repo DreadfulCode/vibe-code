@@ -204,7 +204,7 @@ console.log("The current date is: " + new Date().toLocaleDateString());
             Built with Gatsby, a static site generator.
           </p>
           <a
-            href="https://github.com/your-username/vibe-coding-blog-template"
+            href="https://github.com/DreadfulCode/vibe-code"
             target="_blank"
             rel="noopener noreferrer"
             style={styles.heroButton}
