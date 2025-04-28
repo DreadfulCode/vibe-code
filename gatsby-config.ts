@@ -13,7 +13,46 @@ const config: GatsbyConfig = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+          {
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+            allMarkdownRemark {
+              nodes {
+                fields {
+                  slug
+                }
+              }
+            }
+          }
+        `,
+        resolveSiteUrl: () => "https://vibecoding.dev",
+        resolvePages: ({ allSitePage, allMarkdownRemark }: { allSitePage: any; allMarkdownRemark: any }) => {
+          const blogPostsMap = allMarkdownRemark.nodes.reduce((acc: any, node: any) => {
+            const { slug } = node.fields;
+            acc[slug] = node;
+            return acc;
+          }, {});
+          
+          return allSitePage.nodes.map((page: any) => {
+            return { ...page, ...blogPostsMap[page.path] };
+          });
+        },
+        serialize: ({ path }: { path: string }) => {
+          return {
+            url: path,
+            changefreq: path.includes('/blog/') ? 'weekly' : 'monthly',
+            priority: path.includes('/blog/') ? 0.7 : 0.5,
+          };
+        },
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

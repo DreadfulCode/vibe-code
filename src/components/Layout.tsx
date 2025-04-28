@@ -171,6 +171,11 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
                   About
                 </Link>
               </li>
+              <li>
+                <a href="/sitemap-index.xml" style={layoutStyles.footerLink}>
+                  Sitemap
+                </a>
+              </li>
             </ul>
           </div>
           <div style={layoutStyles.copyright}>
