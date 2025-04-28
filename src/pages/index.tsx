@@ -3,6 +3,7 @@ import { HeadFC, PageProps, Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import { StaticImage } from "gatsby-plugin-image"
 import PostPreview from "../components/PostPreview"
+import CodeBlock from "../components/CodeBlock"
 
 interface MarkdownRemark {
   fields?: {
@@ -328,7 +329,7 @@ console.log("The current date is: " + new Date().toLocaleDateString());
             <p style={styles.codeText}>
               One of the unique features of Vibe Coding With Fred is the ability to run JavaScript code snippets directly in the browser. Try it out below!
             </p>
-            <pre style={styles.codeBlock}>{sampleCode}</pre>
+            <CodeBlock language="javascript">{sampleCode}</CodeBlock>
           </div>
         </div>
       </section>
